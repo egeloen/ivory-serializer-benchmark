@@ -3,7 +3,8 @@
 namespace Ivory\Tests\Serializer\Benchmark;
 
 use Doctrine\Common\Annotations\AnnotationReader;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Component\Cache\Adapter\ApcuAdapter;
+use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\YamlEncoder;
@@ -28,7 +29,7 @@ class SymfonyGetSetNormalizerBenchmark extends AbstractBenchmark
     {
         $classMetadataFactory = new CacheClassMetadataFactory(
             new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader())),
-            new FilesystemAdapter('Symfony', 0, __DIR__.'/../cache')
+            new ApcuAdapter('SymfonyMetadata')
         );
 
         $this->serializer = new Serializer(

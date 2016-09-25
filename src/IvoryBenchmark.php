@@ -9,7 +9,7 @@ use Ivory\Serializer\Registry\TypeRegistry;
 use Ivory\Serializer\Serializer;
 use Ivory\Serializer\Type\ObjectType;
 use Ivory\Serializer\Type\Type;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Component\Cache\Adapter\ApcuAdapter;
 
 /**
  * @author GeLo <geloen.eric@gmail.com>
@@ -28,7 +28,7 @@ class IvoryBenchmark extends AbstractBenchmark
     {
         $classMetadataFactory = new CacheClassMetadataFactory(
             ClassMetadataFactory::create(),
-            new FilesystemAdapter('Ivory', 0, __DIR__.'/../cache')
+            new ApcuAdapter('IvoryMetadata')
         );
 
         $typeRegistry = TypeRegistry::create([

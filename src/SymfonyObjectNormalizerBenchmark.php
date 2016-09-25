@@ -3,14 +3,15 @@
 namespace Ivory\Tests\Serializer\Benchmark;
 
 use Doctrine\Common\Annotations\AnnotationReader;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Component\Cache\Adapter\ApcuAdapter;
+use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\YamlEncoder;
 use Symfony\Component\Serializer\Mapping\Factory\CacheClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
-use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
 /**
@@ -30,11 +31,15 @@ class SymfonyObjectNormalizerBenchmark extends AbstractBenchmark
     {
         $classMetadataFactory = new CacheClassMetadataFactory(
             new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader())),
-            new FilesystemAdapter('Symfony', 0, __DIR__.'/../cache')
+            new ApcuAdapter('SymfonyMetadata')
         );
 
+        $propertyAccessor = PropertyAccess::createPropertyAccessorBuilder()
+            ->setCacheItemPool(new ApcuAdapter('SymfonyPropertyAccessor'))
+            ->getPropertyAccessor();
+
         $this->serializer = new Serializer(
-            [new GetSetMethodNormalizer($classMetadataFactory)],
+            [new ObjectNormalizer($classMetadataFactory, null, $propertyAccessor)],
             [new JsonEncoder(), new XmlEncoder(), new YamlEncoder()]
         );
     }
