@@ -8,6 +8,7 @@ branches:
     only: master
 
 before_script:
+    - printf "\n" | pecl install apcu
     - composer self-update
     - composer update --prefer-source
 
