@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fe3e5ee176636e2ad0a22bba7cdc7413",
-    "content-hash": "6601f0154bc7d0f9b1ee3d3fcfa6443b",
+    "hash": "14d82913df60efd6d61e507208e53985",
+    "content-hash": "6efc3ffb98286f4d801706969d742405",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -465,12 +465,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/egeloen/ivory-serializer.git",
-                "reference": "7f338704dd138c7b569d4a7712397fe2cc486410"
+                "reference": "0e7ca334082887cf3a16ed9c71d44a31b8291628"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egeloen/ivory-serializer/zipball/7f338704dd138c7b569d4a7712397fe2cc486410",
-                "reference": "7f338704dd138c7b569d4a7712397fe2cc486410",
+                "url": "https://api.github.com/repos/egeloen/ivory-serializer/zipball/0e7ca334082887cf3a16ed9c71d44a31b8291628",
+                "reference": "0e7ca334082887cf3a16ed9c71d44a31b8291628",
                 "shasum": ""
             },
             "require": {
@@ -526,7 +526,7 @@
             "keywords": [
                 "serializer"
             ],
-            "time": "2016-09-25 22:14:35"
+            "time": "2016-09-25 22:28:38"
         },
         {
             "name": "jms/metadata",
@@ -1173,6 +1173,59 @@
             "time": "2016-06-08 11:24:07"
         },
         {
+            "name": "symfony/polyfill-apcu",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-apcu.git",
+                "reference": "6d58bceaeea2c2d3eb62503839b18646e161cd6b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-apcu/zipball/6d58bceaeea2c2d3eb62503839b18646e161cd6b",
+                "reference": "6d58bceaeea2c2d3eb62503839b18646e161cd6b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting apcu_* functions to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "apcu",
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2016-05-18 14:26:46"
+        },
+        {
             "name": "symfony/polyfill-mbstring",
             "version": "v1.2.0",
             "source": {
@@ -1494,6 +1547,7 @@
     "stability-flags": {
         "egeloen/serializer": 20,
         "jms/serializer": 20,
+        "symfony/polyfill-apcu": 20,
         "symfony/cache": 20,
         "symfony/console": 20,
         "symfony/property-access": 20,
