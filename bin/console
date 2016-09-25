@@ -1,0 +1,11 @@
+#!/usr/bin/env php
+<?php
+
+use Ivory\Tests\Serializer\Benchmark\BenchmarkApplication;
+
+require_once __DIR__.'/../autoload.php';
+
+set_time_limit(0);
+
+$application = new BenchmarkApplication();
+$application->run();
