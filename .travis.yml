@@ -3,16 +3,23 @@ language: php
 php:
     - 5.6
     - 7.0
+    - hhvm
 
 branches:
     only: master
 
-install:
-    - if [[ $TRAVIS_PHP_VERSION = 5.6 ]]; then printf "\n" | pecl install apcu-4.0.10; fi
-    - if [[ $TRAVIS_PHP_VERSION = 7.0 ]]; then printf "\n" | pecl install apcu; fi
+before_install:
+    - if [[ ! $PHP = hhvm* ]]; then INI_FILE=~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini; else INI_FILE=/etc/hhvm/php.ini; fi
+    - echo memory_limit = -1 >> $INI_FILE
+    - echo session.gc_probability = 0 >> $INI_FILE
+    - echo opcache.enable_cli = 1 >> $INI_FILE
+    - if [[ $PHP = 5.* ]]; then (echo yes | pecl install -f apcu-4.0.11 && echo apc.enable_cli = 1 >> $INI_FILE); fi
+    - if [[ $PHP = 7.0 ]]; then (echo yes | pecl install -f apcu-5.1.5 && echo apc.enable_cli = 1 >> $INI_FILE); fi
+    - cat $INI_FILE
     - phpenv config-rm xdebug.ini
-    - phpenv config-add etc/travis.ini
     - composer self-update
+
+install:
     - composer install --prefer-source --optimize-autoloader
 
 script:
