@@ -17,7 +17,7 @@ First clone the project on on your system:
 $ git clone git@github.com:egeloen/ivory-serializer-benchmark.git 
 ```
 
-## Enable APCu
+### Enable APCu
 
 The autoloader shipped in the project is configured to use the APCu Symfony class loader in order to increase 
 performance, so you need to enable APCu on your system.
