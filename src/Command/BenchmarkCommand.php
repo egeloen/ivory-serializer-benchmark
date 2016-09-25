@@ -6,7 +6,8 @@ use Ivory\Tests\Serializer\Benchmark\IvoryBenchmark;
 use Ivory\Tests\Serializer\Benchmark\JmsBenchmark;
 use Ivory\Tests\Serializer\Benchmark\Result\BenchmarkResultInterface;
 use Ivory\Tests\Serializer\Benchmark\Runner\BenchmarkRunner;
-use Ivory\Tests\Serializer\Benchmark\SymfonyBenchmark;
+use Ivory\Tests\Serializer\Benchmark\SymfonyGetSetNormalizerBenchmark;
+use Ivory\Tests\Serializer\Benchmark\SymfonyObjectNormalizerBenchmark;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -51,7 +52,8 @@ class BenchmarkCommand extends Command
     {
         $benchmarks = [
             new IvoryBenchmark(),
-            new SymfonyBenchmark(),
+            new SymfonyObjectNormalizerBenchmark(),
+            new SymfonyGetSetNormalizerBenchmark(),
             new JmsBenchmark(),
         ];
 
