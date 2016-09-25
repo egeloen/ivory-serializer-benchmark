@@ -10,7 +10,7 @@ use Symfony\Component\Serializer\Encoder\YamlEncoder;
 use Symfony\Component\Serializer\Mapping\Factory\CacheClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
 /**
@@ -34,7 +34,7 @@ class SymfonyBenchmark extends AbstractBenchmark
         );
 
         $this->serializer = new Serializer(
-            [new ObjectNormalizer($classMetadataFactory)],
+            [new GetSetMethodNormalizer($classMetadataFactory)],
             [new JsonEncoder(), new XmlEncoder(), new YamlEncoder()]
         );
     }
