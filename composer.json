@@ -4,7 +4,6 @@
         "egeloen/serializer": "^1.0@dev",
         "jms/serializer": "^1.0@dev",
         "symfony/cache": "^3.2@dev",
-        "symfony/class-loader": "^3.2@dev",
         "symfony/console": "^3.2@dev",
         "symfony/property-access": "^3.2@dev",
         "symfony/serializer": "^3.2@dev",

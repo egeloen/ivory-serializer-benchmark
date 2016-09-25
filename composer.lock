@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "90c22c6d7c17f7556eb7b470576e5f63",
-    "content-hash": "9a946708909ab564943af0451582fa7f",
+    "hash": "fe3e5ee176636e2ad0a22bba7cdc7413",
+    "content-hash": "6601f0154bc7d0f9b1ee3d3fcfa6443b",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -465,12 +465,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/egeloen/ivory-serializer.git",
-                "reference": "b6962a98ea581609ad8f98c6bfb68b3595b2d80b"
+                "reference": "7f338704dd138c7b569d4a7712397fe2cc486410"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egeloen/ivory-serializer/zipball/b6962a98ea581609ad8f98c6bfb68b3595b2d80b",
-                "reference": "b6962a98ea581609ad8f98c6bfb68b3595b2d80b",
+                "url": "https://api.github.com/repos/egeloen/ivory-serializer/zipball/7f338704dd138c7b569d4a7712397fe2cc486410",
+                "reference": "7f338704dd138c7b569d4a7712397fe2cc486410",
                 "shasum": ""
             },
             "require": {
@@ -526,7 +526,7 @@
             "keywords": [
                 "serializer"
             ],
-            "time": "2016-09-25 18:44:06"
+            "time": "2016-09-25 22:14:35"
         },
         {
             "name": "jms/metadata",
@@ -994,62 +994,6 @@
                 "psr6"
             ],
             "time": "2016-09-25 16:21:58"
-        },
-        {
-            "name": "symfony/class-loader",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/class-loader.git",
-                "reference": "67ee799bed8293934ba74be71c13010835770bb2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/class-loader/zipball/67ee799bed8293934ba74be71c13010835770bb2",
-                "reference": "67ee799bed8293934ba74be71c13010835770bb2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "symfony/finder": "~2.8|~3.0",
-                "symfony/polyfill-apcu": "~1.1"
-            },
-            "suggest": {
-                "symfony/polyfill-apcu": "For using ApcClassLoader on HHVM"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\ClassLoader\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony ClassLoader Component",
-            "homepage": "https://symfony.com",
-            "time": "2016-09-12 19:03:45"
         },
         {
             "name": "symfony/console",
@@ -1551,7 +1495,6 @@
         "egeloen/serializer": 20,
         "jms/serializer": 20,
         "symfony/cache": 20,
-        "symfony/class-loader": 20,
         "symfony/console": 20,
         "symfony/property-access": 20,
         "symfony/serializer": 20,
