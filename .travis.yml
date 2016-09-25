@@ -1,0 +1,18 @@
+language: php
+
+php:
+    - 5.6
+    - 7.0
+
+branches:
+    only: master
+
+before_script:
+    - composer self-update
+    - composer update --prefer-source
+
+script:
+    - vendor/bin/benchmark --iteration 100
+    - vendor/bin/benchmark --horizontal-complexity 4 --iteration 100
+    - vendor/bin/benchmark --vertical-complexity 4 --iteration 100
+    - vendor/bin/benchmark --horizontal-complexity 4 --vertical-complexity 4 --iteration 100
