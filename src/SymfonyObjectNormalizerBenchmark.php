@@ -39,7 +39,7 @@ class SymfonyObjectNormalizerBenchmark extends AbstractBenchmark
             ->getPropertyAccessor();
 
         $this->serializer = new Serializer(
-            [new ObjectNormalizer($classMetadataFactory, null, $propertyAccessor)],
+            [new ObjectNormalizer($classMetadataFactory, null , $propertyAccessor)],
             [new JsonEncoder(), new XmlEncoder(), new YamlEncoder()]
         );
     }
