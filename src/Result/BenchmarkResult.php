@@ -20,20 +20,13 @@ class BenchmarkResult implements BenchmarkResultInterface
     private $time;
 
     /**
-     * @var int
-     */
-    private $memory;
-
-    /**
      * @param BenchmarkInterface $benchmark
      * @param int                $time
-     * @param int|null           $memory
      */
-    public function __construct(BenchmarkInterface $benchmark, $time, $memory = null)
+    public function __construct(BenchmarkInterface $benchmark, $time)
     {
         $this->benchmark = $benchmark;
         $this->time = $time;
-        $this->memory = $memory;
     }
 
     /**
@@ -50,13 +43,5 @@ class BenchmarkResult implements BenchmarkResultInterface
     public function getTime()
     {
         return $this->time;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getMemory()
-    {
-        return $this->memory;
     }
 }

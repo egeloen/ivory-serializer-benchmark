@@ -18,9 +18,4 @@ interface BenchmarkResultInterface
      * @return int
      */
     public function getTime();
-
-    /**
-     * @return int
-     */
-    public function getMemory();
 }

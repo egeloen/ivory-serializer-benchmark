@@ -73,6 +73,6 @@ class BenchmarkCommand extends Command
      */
     private function output(BenchmarkResultInterface $result, OutputInterface $output)
     {
-        $output->writeln(get_class($result->getBenchmark()).' '.$result->getTime());
+        $output->writeln(get_class($result->getBenchmark()).' | '.$result->getTime());
     }
 }

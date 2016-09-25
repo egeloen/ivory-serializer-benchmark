@@ -1,7 +1,7 @@
 # README
 
-This project benchmarks the most popular & feature rich PHP serializers. It measures time ans memory consumed during 
-the serialization of an object graph and give you a report of the execution.
+This project benchmarks the most popular & feature rich PHP serializers. It measures the time consumed during the 
+serialization of an object graph and give you a report of the execution.
 
 The result of the benchmark is directly available on travis: https://travis-ci.org/egeloen/ivory-serializer-benchmark
 

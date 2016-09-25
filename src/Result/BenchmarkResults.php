@@ -18,11 +18,6 @@ class BenchmarkResults implements BenchmarkResultInterface
     private $time;
 
     /**
-     * @var int
-     */
-    private $memory;
-
-    /**
      * @param BenchmarkResultInterface[] $results
      */
     public function __construct(array $results)
@@ -60,21 +55,5 @@ class BenchmarkResults implements BenchmarkResultInterface
         }
 
         return $this->time = $this->time / count($this->results);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getMemory()
-    {
-        if ($this->memory !== null) {
-            return $this->memory;
-        }
-
-        foreach ($this->results as $result) {
-            $this->memory += $result->getMemory();
-        }
-
-        return $this->memory = $this->memory / count($this->results);
     }
 }
