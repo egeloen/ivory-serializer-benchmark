@@ -3,12 +3,12 @@
         "php": "^5.6|^7.0",
         "egeloen/serializer": "^1.0@dev",
         "jms/serializer": "^1.0@dev",
-        "symfony/cache": "^3.0@dev",
-        "symfony/class-loader": "^3.0@dev",
-        "symfony/console": "^3.0@dev",
-        "symfony/property-access": "^3.0@dev",
-        "symfony/serializer": "^3.0@dev",
-        "symfony/yaml": "^3.0@dev"
+        "symfony/cache": "^3.2@dev",
+        "symfony/class-loader": "^3.2@dev",
+        "symfony/console": "^3.2@dev",
+        "symfony/property-access": "^3.2@dev",
+        "symfony/serializer": "^3.2@dev",
+        "symfony/yaml": "^3.2@dev"
     },
     "autoload": {
         "psr-4": { "Ivory\\Tests\\Serializer\\Benchmark\\": "src/" }
