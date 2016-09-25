@@ -10,6 +10,7 @@ branches:
 
 before_install:
     - if [[ ! $PHP = hhvm* ]]; then INI_FILE=~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini; else INI_FILE=/etc/hhvm/php.ini; fi
+    - echo $INI_FILE
     - echo memory_limit = -1 >> $INI_FILE
     - echo session.gc_probability = 0 >> $INI_FILE
     - echo opcache.enable_cli = 1 >> $INI_FILE
