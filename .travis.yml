@@ -15,6 +15,7 @@ before_install:
     - echo opcache.enable_cli = 1 >> $INI_FILE
     - if [[ $PHP = 5.* ]]; then (echo yes | pecl install -f apcu-4.0.11 && echo apc.enable_cli = 1 >> $INI_FILE); fi
     - if [[ $PHP = 7.0 ]]; then (echo yes | pecl install -f apcu-5.1.5 && echo apc.enable_cli = 1 >> $INI_FILE); fi
+    - cat $INI_FILE | grep apc
     - phpenv config-rm xdebug.ini
     - composer self-update
 
