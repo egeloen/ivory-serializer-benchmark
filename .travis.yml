@@ -12,7 +12,7 @@ install:
     - if [[ $TRAVIS_PHP_VERSION = 7.0 ]]; then printf "\n" | pecl install apcu; fi
     - phpenv config-rm xdebug.ini
     - composer self-update
-    - composer update --prefer-source --optmize-autoloader
+    - composer update --prefer-source --optimize-autoloader
 
 script:
     - bin/benchmark --iteration 100
