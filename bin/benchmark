@@ -5,6 +5,7 @@ use Ivory\Tests\Serializer\Benchmark\BenchmarkApplication;
 
 require_once __DIR__.'/../autoload.php';
 
+gc_disable();
 set_time_limit(0);
 
 $application = new BenchmarkApplication();
