@@ -13,10 +13,8 @@ use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
-/**
- * @author GeLo <geloen.eric@gmail.com>
- */
-class SymfonyBenchmark extends AbstractBenchmark
+
+class SymfonyGetSetNormalizerBenchmark extends AbstractBenchmark
 {
     /**
      * @var Serializer
