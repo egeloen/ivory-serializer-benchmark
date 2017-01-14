@@ -4,7 +4,6 @@ namespace Ivory\Tests\Serializer\Benchmark;
 
 use Doctrine\Common\Annotations\AnnotationReader;
 use Symfony\Component\Cache\Adapter\ApcuAdapter;
-use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\YamlEncoder;
@@ -14,7 +13,9 @@ use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
-
+/**
+ * @author GeLo <geloen.eric@gmail.com>
+ */
 class SymfonyGetSetNormalizerBenchmark extends AbstractBenchmark
 {
     /**
