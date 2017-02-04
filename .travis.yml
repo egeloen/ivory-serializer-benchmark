@@ -14,7 +14,7 @@ install:
     - if [[ $TRAVIS_PHP_VERSION = 7.* ]]; then printf "\n" | pecl install apcu; fi
     - if [[ $TRAVIS_PHP_VERSION != 'hhvm' ]]; then phpenv config-rm xdebug.ini; fi
     - if [[ $TRAVIS_PHP_VERSION = 'hhvm' ]]; then mkdir -p ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d; fi
-    - phpenv config-add etc/www.ini
+    - phpenv config-add docker/config/php.ini
     - composer self-update
     - composer install --prefer-source --optimize-autoloader
 

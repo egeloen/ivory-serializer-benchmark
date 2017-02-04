@@ -17,17 +17,32 @@ First clone the project on on your system:
 $ git clone git@github.com:egeloen/ivory-serializer-benchmark.git 
 ```
 
-### Enable APCu
+### Set up the project
 
-The autoloader shipped in the project is configured to use the APCu Symfony class loader in order to increase 
-performance, so you need to enable APCu on your system.
+The most easy way to set up the project is to install [Docker](https://www.docker.com) and
+[Docker Composer](https://docs.docker.com/compose/) and build the project. The configuration is shipped with a 
+distribution environment file allowing you to customize your current user/group ID:
+
+``` bash
+$ cp .env.dist .env
+```
+
+**The most important part is the `USER_ID` and `GROUP_ID` which should match your current user/group.**
+
+Once you have configured your environment, you can build the project:
+
+``` bash
+$ docker-compose build
+```
 
 ### Install dependencies
 
 Install the project dependencies with composer and generated an optimized autoloader:
 
+Install the dependencies via [Composer](https://getcomposer.org/):
+
 ``` bash
-$ composer install --optimize-autoloader
+$ docker-compose run --rm php composer install
 ```
 
 ### Benchmark
@@ -35,28 +50,28 @@ $ composer install --optimize-autoloader
 To benchmark a single serialization, you can use:
 
 ``` bash
-$ ./bin/benchmark
+$ docker-compose run --rm php bin/benchmark
 ```
 
 If you want to get a more accurate value, you can use the `iteration` option which will run the benchmark `n` times 
 and will give you the average of the executions:
 
 ``` bash
-$ ./bin/benchmark --iteration 100
+$ docker-compose run --rm php bin/benchmark --iteration 100
 ```
 
 If you want to increase the horizontal complexity of the serialization, you can use the `horizontal-complexity` option 
 which represents a complexity factor:
 
 ``` bash
-$ ./bin/benchmark --horizontal-complexity 4
+$ docker-compose run --rm php bin/benchmark --horizontal-complexity 4
 ```
 
 If you want to increase the vertical complexity of the serialization, you can use the `vertical-complexity` option 
 which represents a complexity factor:
 
 ``` bash
-$ ./bin/benchmark --vertical-complexity 4
+$ docker-compose run --rm php bin/benchmark --vertical-complexity 4
 ```
 
 ## Contribute
