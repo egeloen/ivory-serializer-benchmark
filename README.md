@@ -37,8 +37,6 @@ $ docker-compose build
 
 ### Install dependencies
 
-Install the project dependencies with composer and generated an optimized autoloader:
-
 Install the dependencies via [Composer](https://getcomposer.org/):
 
 ``` bash
