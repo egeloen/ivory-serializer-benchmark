@@ -1,11 +1,13 @@
 version: '2'
 
 services:
-    php:
-        build: docker
-        environment:
-            USER_ID: ${USER_ID}
-            GROUP_ID: ${GROUP_ID}
+    php: &php
+        build: docker/php
+        env_file:
+            - .env
         volumes:
             - ~/.composer:/var/www/.composer
             - .:/var/www/html
+    hhvm:
+        <<: *php
+        build: docker/hhvm
