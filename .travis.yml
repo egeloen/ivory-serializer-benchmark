@@ -9,7 +9,7 @@ branches:
 install:
     - phpenv config-rm xdebug.ini
     - phpenv config-add docker/php/config/php.ini
-    - php -i
+    - phpenv config-add docker/php/config/apcu.ini
     - composer self-update
     - composer install --prefer-source --optimize-autoloader
 
