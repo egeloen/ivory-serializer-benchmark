@@ -8,7 +8,7 @@ branches:
 
 install:
     - printf "\n" | pecl install -f apcu-5.1.8
-    - phpenv config-rm xdebug.ini; fi
+    - phpenv config-rm xdebug.ini
     - phpenv config-add docker/php/config/php.ini
     - composer self-update
     - composer install --prefer-source --optimize-autoloader
