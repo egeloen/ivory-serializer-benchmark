@@ -7,7 +7,7 @@ branches:
     only: master
 
 install:
-    - pecl install apcu-5.1.8
+    - pecl install -f apcu-5.1.8
     - phpenv config-rm xdebug.ini; fi
     - phpenv config-add docker/php/config/php.ini
     - composer self-update
