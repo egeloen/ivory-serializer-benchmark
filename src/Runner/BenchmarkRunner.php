@@ -55,6 +55,6 @@ class BenchmarkRunner
         $benchmark->execute($horizontalComplexity, $verticalComplexity);
         $finishTime = microtime(true);
 
-        return new BenchmarkResult($benchmark, $finishTime - $startTime);
+        return new BenchmarkResult($benchmark->getName(), $finishTime - $startTime);
     }
 }

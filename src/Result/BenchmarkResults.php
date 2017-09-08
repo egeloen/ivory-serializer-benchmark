@@ -28,23 +28,23 @@ class BenchmarkResults implements BenchmarkResultInterface
     /**
      * @return BenchmarkResultInterface[]
      */
-    public function getResults()
+    public function getResults(): array
     {
         return $this->results;
     }
 
     /**
-     * {@inheritdoc}
+     * @return string
      */
-    public function getBenchmark()
+    public function getName(): string
     {
-        return reset($this->results)->getBenchmark();
+        return reset($this->results)->getName();
     }
 
     /**
-     * {@inheritdoc}
+     * @return float
      */
-    public function getTime()
+    public function getTime(): float
     {
         if ($this->time !== null) {
             return $this->time;

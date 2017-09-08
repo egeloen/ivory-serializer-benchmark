@@ -16,6 +16,12 @@ use Symfony\Component\Cache\Adapter\ApcuAdapter;
  */
 class IvoryBenchmark extends AbstractBenchmark
 {
+
+    /**
+     * @const string
+     */
+    protected const NAME = 'Ivory';
+
     /**
      * @var Serializer
      */

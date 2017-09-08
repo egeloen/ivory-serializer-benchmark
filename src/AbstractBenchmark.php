@@ -12,8 +12,25 @@ use Ivory\Tests\Serializer\Benchmark\Model\Thread;
  */
 abstract class AbstractBenchmark implements BenchmarkInterface
 {
+
+    /**
+     * @const string
+     */
+    protected const NAME = 'override_me';
+
+    /**
+     *
+     */
     public function setUp()
     {
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return static::NAME;
     }
 
     /**

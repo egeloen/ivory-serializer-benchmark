@@ -18,6 +18,12 @@ use Symfony\Component\Serializer\Serializer;
  */
 class SymfonyGetSetNormalizerBenchmark extends AbstractBenchmark
 {
+
+    /**
+     * @const string
+     */
+    protected const NAME = 'Symfony - GetNormalizer';
+
     /**
      * @var Serializer
      */

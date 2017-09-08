@@ -2,35 +2,40 @@
 
 namespace Ivory\Tests\Serializer\Benchmark;
 
+use BetterSerializer\Builder;
 use BetterSerializer\Common\SerializationType;
 use BetterSerializer\Serializer;
-use Pimple\Container;
 
 /**
  * @author GeLo <geloen.eric@gmail.com>
  */
 class BsBenchmark extends AbstractBenchmark
 {
+
     /**
-     * @var Container
+     * @const string
      */
-    private static $container;
+    protected const NAME = 'BetterSerializer';
 
     /**
      * @var Serializer
      */
-    private static $serializer;
+    private $serializer;
 
     /**
      * {@inheritdoc}
      */
     public function setUp()
     {
-        self::$container = require dirname(__DIR__) . '/vendor/better-serializer/better-serializer/dev/di.pimple.php';
-        self::$serializer = self::$container->offsetGet(Serializer::class);
-//        $this->serializer = SerializerBuilder::create()
-//            ->setCacheDir(__DIR__.'/../cache/Jms')
-//            ->build();
+        $builder = new Builder();
+
+        if (extension_loaded('apcu') && ini_get('apc.enabled')) {
+            $builder->enableApcuCache();
+        } else {
+            $builder->setCacheDir(dirname(__DIR__, 2) . '/cache/better-serializer');
+        }
+
+        $this->serializer = $builder->createSerializer();
     }
 
     /**
@@ -38,7 +43,7 @@ class BsBenchmark extends AbstractBenchmark
      */
     public function execute($horizontalComplexity = 1, $verticalComplexity = 1)
     {
-        return self::$serializer->serialize(
+        return $this->serializer->serialize(
             $this->getData($horizontalComplexity, $verticalComplexity),
             SerializationType::byValue($this->getFormat())
         );

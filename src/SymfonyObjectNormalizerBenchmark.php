@@ -19,6 +19,12 @@ use Symfony\Component\Serializer\Serializer;
  */
 class SymfonyObjectNormalizerBenchmark extends AbstractBenchmark
 {
+
+    /**
+     * @const string
+     */
+    protected const NAME = 'Symfony - ObjectNormalizer';
+
     /**
      * @var Serializer
      */

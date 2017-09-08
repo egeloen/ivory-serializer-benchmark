@@ -10,6 +10,11 @@ interface BenchmarkInterface
     public function setUp();
 
     /**
+     * @return string
+     */
+    public function getName(): string;
+
+    /**
      * @param int $horizontalComplexity
      * @param int $verticalComplexity
      */

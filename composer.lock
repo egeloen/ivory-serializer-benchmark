@@ -12,21 +12,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/better-serializer/better-serializer.git",
-                "reference": "cb2b50db6df65e66c844ae585c249f744770503e"
+                "reference": "7c4c74057b86365a502bed8bc558d94e12ab8730"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/better-serializer/better-serializer/zipball/cb2b50db6df65e66c844ae585c249f744770503e",
-                "reference": "cb2b50db6df65e66c844ae585c249f744770503e",
+                "url": "https://api.github.com/repos/better-serializer/better-serializer/zipball/7c4c74057b86365a502bed8bc558d94e12ab8730",
+                "reference": "7c4c74057b86365a502bed8bc558d94e12ab8730",
                 "shasum": ""
             },
             "require": {
                 "doctrine/annotations": "^1.3",
+                "doctrine/cache": "^v1.7",
                 "doctrine/instantiator": "^1.0",
                 "league/flysystem": "^1.0",
                 "marc-mabe/php-enum": "^2.3",
                 "php": "^7.1",
                 "phpdocumentor/reflection-docblock": "^3.0",
+                "pimple/pimple": "^3.0",
                 "roave/security-advisories": "dev-master"
             },
             "require-dev": {
@@ -38,7 +40,6 @@
                 "phpro/grumphp": "^v0.12",
                 "phpstan/phpstan": "^0.7",
                 "phpunit/phpunit": "^6.0",
-                "pimple/pimple": "^3.0",
                 "satooshi/php-coveralls": "~1.0",
                 "sebastian/phpcpd": "^3.0",
                 "sensiolabs/security-checker": "^4.0",
@@ -62,7 +63,7 @@
                 }
             ],
             "description": "General de/serializer for vatious serialization formats.",
-            "time": "2017-09-05 21:49:40"
+            "time": "2017-09-08 19:46:16"
         },
         {
             "name": "doctrine/annotations",
