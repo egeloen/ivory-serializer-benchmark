@@ -68,8 +68,8 @@ class BenchmarkCommand extends Command
         $results = new ResultsAggregate();
 
         foreach ($benchmarks as $benchmark) {
-            $output->writeln($benchmark->getName() . ': Done!');
             $results->addResult($this->runner->run($benchmark, $iteration, $horizontalComplexity, $verticalComplexity));
+            $output->writeln($benchmark->getName() . ': Done!');
         }
 
         $output->writeln('');
