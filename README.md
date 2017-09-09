@@ -72,6 +72,13 @@ which represents a complexity factor:
 $ docker-compose run --rm php bin/benchmark --vertical-complexity 4
 ```
 
+Symfony serializer isn't included in the benchmarking process by default, because it is very slow.
+If you'd like to benchmark also the Symfony serializer, you can use the `with-symfony-serializer` option:
+
+``` bash
+$ docker-compose run --rm php bin/benchmark --with-symfony-serializer
+```
+
 ## Contribute
 
 We love contributors! Ivory is an open source project. If you'd like to contribute, feel free to propose a PR!.
