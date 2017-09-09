@@ -14,6 +14,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -45,7 +46,8 @@ class BenchmarkCommand extends Command
             ->setName('benchmark')
             ->addOption('iteration', 'i', InputArgument::OPTIONAL, 'Number of iteration(s)', 1)
             ->addOption('horizontal-complexity', 'hc', InputArgument::OPTIONAL, 'Horizontal data complexity', 1)
-            ->addOption('vertical-complexity', 'vc', InputArgument::OPTIONAL, 'Vertical data complexity', 1);
+            ->addOption('vertical-complexity', 'vc', InputArgument::OPTIONAL, 'Vertical data complexity', 1)
+            ->addOption('with-symfony-serializer', 'wss', InputOption::VALUE_NONE, 'Also run with Symfony serializer');
     }
 
     /**
@@ -55,11 +57,16 @@ class BenchmarkCommand extends Command
     {
         $benchmarks = [
             new IvoryBenchmark(),
-//            new SymfonyObjectNormalizerBenchmark(),
-//            new SymfonyGetSetNormalizerBenchmark(),
             new JmsBenchmark(),
             new BsBenchmark(),
         ];
+
+        $withSymfony = $input->getOption('with-symfony-serializer');
+
+        if ($withSymfony) {
+            $benchmarks[] = new SymfonyObjectNormalizerBenchmark();
+            $benchmarks[] = new SymfonyGetSetNormalizerBenchmark();
+        }
 
         $iteration = $input->getOption('iteration');
         $horizontalComplexity = $input->getOption('horizontal-complexity');
