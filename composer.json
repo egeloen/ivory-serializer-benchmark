@@ -11,10 +11,14 @@
         "symfony/serializer": "^3.0",
         "symfony/yaml": "^3.0",
         "pimple/pimple": "~3.0",
-        "better-serializer/better-serializer": "dev-master"
+        "better-serializer/better-serializer": "dev-master",
+        "phpbench/phpbench": "^1.0@dev"
     },
     "autoload": {
-        "psr-4": { "Ivory\\Tests\\Serializer\\Benchmark\\": "src/" }
+        "psr-4": {
+            "Ivory\\Tests\\Serializer\\Benchmark\\": "src/",
+            "SerializerBenchmarks\\": "src/SerializerBenchmarks/"
+        }
     },
     "minimum-stability": "dev"
 }
