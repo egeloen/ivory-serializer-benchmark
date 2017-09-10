@@ -79,6 +79,20 @@ If you'd like to benchmark also the Symfony serializer, you can use the `with-sy
 $ docker-compose run --rm php bin/benchmark --with-symfony-serializer
 ```
 
+## PhpBench integration
+
+All the benchmarks were also integrated with PhpBench, to provide more trustful results. You can run the benchmarks
+using these commands:
+
+```bash
+$ vendor/bin/phpbench run src/SerializerBenchmarks/JmsSerializerBench.php --report=aggregate --revs=10 --iterations=10 --retry-threshold=5 --dump-file=a.xml
+$ vendor/bin/phpbench run src/SerializerBenchmarks/IvorySerializerBench.php --report=aggregate --revs=10 --iterations=10 --retry-threshold=5 --dump-file=b.xml
+$ vendor/bin/phpbench run src/SerializerBenchmarks/BetterSerializerBench.php --report=aggregate --revs=10 --iterations=10 --retry-threshold=5 --dump-file=c.xml
+$ vendor/bin/phpbench run src/SerializerBenchmarks/SymfonyGsNormSerializerBench.php --report=aggregate --revs=1 --iterations=1  --dump-file=d.xml
+$ vendor/bin/phpbench run src/SerializerBenchmarks/SymfonyObjNormSerializerBench.php --report=aggregate --revs=1 --iterations=1  --dump-file=e.xml
+$ vendor/bin/phpbench report --file=a.xml --file=b.xml --file=c.xml --file=d.xml --file=e.xml --report=compare
+```
+
 ## Contribute
 
 We love contributors! Ivory is an open source project. If you'd like to contribute, feel free to propose a PR!.
