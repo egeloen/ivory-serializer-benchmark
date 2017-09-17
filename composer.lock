@@ -67,12 +67,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/better-serializer/better-serializer.git",
-                "reference": "7c4c74057b86365a502bed8bc558d94e12ab8730"
+                "reference": "86ead98d510e7b4e05f9320cb8c8e4913bf944e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/better-serializer/better-serializer/zipball/7c4c74057b86365a502bed8bc558d94e12ab8730",
-                "reference": "7c4c74057b86365a502bed8bc558d94e12ab8730",
+                "url": "https://api.github.com/repos/better-serializer/better-serializer/zipball/86ead98d510e7b4e05f9320cb8c8e4913bf944e4",
+                "reference": "86ead98d510e7b4e05f9320cb8c8e4913bf944e4",
                 "shasum": ""
             },
             "require": {
@@ -118,7 +118,7 @@
                 }
             ],
             "description": "General de/serializer for vatious serialization formats.",
-            "time": "2017-09-08 19:46:16"
+            "time": "2017-09-17 15:23:05"
         },
         {
             "name": "container-interop/container-interop",
