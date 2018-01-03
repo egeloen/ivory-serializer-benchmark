@@ -11,7 +11,7 @@
         "symfony/serializer": "^3.0",
         "symfony/yaml": "^3.0",
         "pimple/pimple": "~3.0",
-        "better-serializer/better-serializer": "dev-master",
+        "better-serializer/better-serializer": "dev-master#8e6f1ae4ae67bb6d992b7f1f91ced2e9a32e0740",
         "phpbench/phpbench": "^1.0@dev"
     },
     "autoload": {
