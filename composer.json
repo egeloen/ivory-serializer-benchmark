@@ -5,11 +5,11 @@
         "egeloen/serializer": "^1.0",
         "jms/serializer": "^1.0",
         "symfony/polyfill-apcu": "^1.0",
-        "symfony/cache": "^3.0",
-        "symfony/console": "^3.0",
-        "symfony/property-access": "^3.0",
-        "symfony/serializer": "^3.0",
-        "symfony/yaml": "^3.0"
+        "symfony/cache": "^4.0",
+        "symfony/console": "^4.0",
+        "symfony/property-access": "^4.0",
+        "symfony/serializer": "^4.0",
+        "symfony/yaml": "^4.0"
     },
     "autoload": {
         "psr-4": { "Ivory\\Tests\\Serializer\\Benchmark\\": "src/" }
