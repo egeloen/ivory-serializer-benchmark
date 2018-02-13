@@ -68,6 +68,23 @@ which represents a complexity factor:
 $ docker-compose run --rm php bin/benchmark --vertical-complexity 4
 ```
 
+If you want to run the benchmark only for a specific serializer, you can use the `serializer` option:
+
+``` bash
+$ docker-compose run --rm php bin/benchmark --serializer SymfonyGetSetNormalizer
+```
+
+Available serializers:
+
+* `Ivory`
+* `Jms`
+* `JmsMinimal`
+* `JsonSerializable`
+* `SerializardClosure`
+* `SerializardReflection`
+* `SymfonyGetSetNormalizer`
+* `SymfonyObjectNormalizer`
+
 ## Contribute
 
 We love contributors! Ivory is an open source project. If you'd like to contribute, feel free to propose a PR!.

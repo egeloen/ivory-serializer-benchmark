@@ -15,6 +15,7 @@ use Ivory\Tests\Serializer\Benchmark\SymfonyObjectNormalizerBenchmark;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -46,7 +47,8 @@ class BenchmarkCommand extends Command
             ->setName('benchmark')
             ->addOption('iteration', 'i', InputArgument::OPTIONAL, 'Number of iteration(s)', 1)
             ->addOption('horizontal-complexity', 'hc', InputArgument::OPTIONAL, 'Horizontal data complexity', 1)
-            ->addOption('vertical-complexity', 'vc', InputArgument::OPTIONAL, 'Vertical data complexity', 1);
+            ->addOption('vertical-complexity', 'vc', InputArgument::OPTIONAL, 'Vertical data complexity', 1)
+            ->addOption('serializer', 's', InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'the serializer(s) to use', null);
     }
 
     /**
@@ -54,16 +56,30 @@ class BenchmarkCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $benchmarks = [
-            new IvoryBenchmark(),
-            new SymfonyObjectNormalizerBenchmark(),
-            new SymfonyGetSetNormalizerBenchmark(),
-            new JmsBenchmark(),
-            new JmsMinimalBenchmark(),
-            new JsonSerializableBenchmark(),
-            new SerializardClosureBenchmark(),
-            new SerializardReflectionBenchmark(),
-        ];
+        if ($serializers = $input->getOption('serializer')) {
+            $benchmarks = [];
+            foreach ($serializers as $serializer) {
+                if (!class_exists($serializer)) {
+                    $serializer = "\Ivory\Tests\Serializer\Benchmark\\{$serializer}Benchmark";
+                    if (!class_exists($serializer)) {
+                        throw new \InvalidArgumentException("The class \"{$serializer}\" doesn't exist");
+                    }
+                }
+
+                $benchmarks[] = new $serializer();
+            }
+        } else {
+            $benchmarks = [
+                new IvoryBenchmark(),
+                new SymfonyObjectNormalizerBenchmark(),
+                new SymfonyGetSetNormalizerBenchmark(),
+                new JmsBenchmark(),
+                new JmsMinimalBenchmark(),
+                new JsonSerializableBenchmark(),
+                new SerializardClosureBenchmark(),
+                new SerializardReflectionBenchmark(),
+            ];
+        }
 
         $iteration = $input->getOption('iteration');
         $horizontalComplexity = $input->getOption('horizontal-complexity');
