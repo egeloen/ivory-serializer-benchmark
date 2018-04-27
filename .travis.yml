@@ -1,15 +1,19 @@
 language: php
 
-php:
-    - 7.1
-    - 7.2
-    - nightly
-
 branches:
     only: master
 
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.1
+    - php: 7.2
+    - php: nightly
+  allow_failures:
+    - php: nightly
+
 install:
-    - phpenv config-rm xdebug.ini
+    - phpenv config-rm xdebug.ini || echo 'xdebug not available'
     - phpenv config-add docker/php/config/php.ini
     - composer install --classmap-authoritative
 
