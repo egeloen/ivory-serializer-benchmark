@@ -8,9 +8,6 @@ matrix:
   include:
     - php: 7.1
     - php: 7.2
-    - php: nightly
-  allow_failures:
-    - php: nightly
 
 install:
     - phpenv config-rm xdebug.ini || echo 'xdebug not available'
