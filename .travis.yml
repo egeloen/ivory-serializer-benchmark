@@ -1,12 +1,11 @@
 language: php
-
-branches:
-    only: master
+#
+#branches:
+#    only: master
 
 matrix:
   fast_finish: true
   include:
-    - php: 7.1
     - php: 7.2
 
 install:
@@ -15,7 +14,7 @@ install:
     - composer install --classmap-authoritative
 
 script:
-    - bin/benchmark --iteration 100
-    - bin/benchmark --horizontal-complexity 4 --iteration 100
-    - bin/benchmark --vertical-complexity 4 --iteration 100
-    - bin/benchmark --horizontal-complexity 4 --vertical-complexity 4 --iteration 100
+    - bin/benchmark --iteration 10
+    - bin/benchmark --horizontal-complexity 30 --iteration 10
+    - bin/benchmark --vertical-complexity 30 --iteration 10
+    - bin/benchmark --horizontal-complexity 30 --vertical-complexity 30 --iteration 10
