@@ -14,7 +14,7 @@ install:
     - composer install --classmap-authoritative
 
 script:
-    - bin/benchmark --iteration 10
-    - bin/benchmark --horizontal-complexity 30 --iteration 10
-    - bin/benchmark --vertical-complexity 30 --iteration 10
-    - bin/benchmark --horizontal-complexity 30 --vertical-complexity 30 --iteration 10
+    - bin/benchmark --iteration 5
+    - bin/benchmark --horizontal-complexity 30 --iteration 5
+    - bin/benchmark --vertical-complexity 30 --iteration 5
+    - bin/benchmark --horizontal-complexity 30 --vertical-complexity 30 --iteration 5
