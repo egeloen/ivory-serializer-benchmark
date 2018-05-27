@@ -39,7 +39,7 @@ final class BetterSerializerBench extends AbstractBench
         if (extension_loaded('apcu') && ini_get('apc.enabled')) {
             $builder->enableApcuCache();
         } else {
-            $builder->setCacheDir(dirname(__DIR__, 2) . '/cache/better-serializer');
+            $builder->enableFilesystemCache(dirname(__DIR__, 2) . '/cache/better-serializer');
         }
 
         $this->serializer = $builder->createSerializer();

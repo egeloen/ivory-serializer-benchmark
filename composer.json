@@ -3,7 +3,7 @@
         "php": "^7.1",
         "doctrine/cache": "^1.0",
         "egeloen/serializer": "^1.0",
-        "jms/serializer": "^1.8",
+        "jms/serializer": "^1.12",
         "symfony/polyfill-apcu": "^1.0",
         "symfony/cache": "^3.0",
         "symfony/console": "^3.0",
@@ -11,8 +11,8 @@
         "symfony/serializer": "^3.0",
         "symfony/yaml": "^3.0",
         "pimple/pimple": "~3.0",
-        "better-serializer/better-serializer": "dev-master#8e6f1ae4ae67bb6d992b7f1f91ced2e9a32e0740",
-        "phpbench/phpbench": "^1.0@dev"
+        "phpbench/phpbench": "^1.0@dev",
+        "better-serializer/better-serializer": "^0.1"
     },
     "autoload": {
         "psr-4": {
