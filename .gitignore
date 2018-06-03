@@ -1,3 +1,5 @@
-/.env
+.env
 /cache
 /vendor
+.idea
+/*.xml

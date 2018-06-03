@@ -2,15 +2,19 @@
 
 namespace Ivory\Tests\Serializer\Benchmark\Command;
 
+use Ivory\Tests\Serializer\Benchmark\BsBenchmark;
 use Ivory\Tests\Serializer\Benchmark\IvoryBenchmark;
 use Ivory\Tests\Serializer\Benchmark\JmsBenchmark;
 use Ivory\Tests\Serializer\Benchmark\Result\BenchmarkResultInterface;
+use Ivory\Tests\Serializer\Benchmark\Result\ResultsAggregate;
 use Ivory\Tests\Serializer\Benchmark\Runner\BenchmarkRunner;
 use Ivory\Tests\Serializer\Benchmark\SymfonyGetSetNormalizerBenchmark;
 use Ivory\Tests\Serializer\Benchmark\SymfonyObjectNormalizerBenchmark;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -42,7 +46,8 @@ class BenchmarkCommand extends Command
             ->setName('benchmark')
             ->addOption('iteration', 'i', InputArgument::OPTIONAL, 'Number of iteration(s)', 1)
             ->addOption('horizontal-complexity', 'hc', InputArgument::OPTIONAL, 'Horizontal data complexity', 1)
-            ->addOption('vertical-complexity', 'vc', InputArgument::OPTIONAL, 'Vertical data complexity', 1);
+            ->addOption('vertical-complexity', 'vc', InputArgument::OPTIONAL, 'Vertical data complexity', 1)
+            ->addOption('with-symfony-serializer', 'wss', InputOption::VALUE_NONE, 'Also run with Symfony serializer');
     }
 
     /**
@@ -52,29 +57,35 @@ class BenchmarkCommand extends Command
     {
         $benchmarks = [
             new IvoryBenchmark(),
-            new SymfonyObjectNormalizerBenchmark(),
-            new SymfonyGetSetNormalizerBenchmark(),
             new JmsBenchmark(),
+            new BsBenchmark(),
         ];
+
+        $withSymfony = $input->getOption('with-symfony-serializer');
+
+        if ($withSymfony) {
+            $benchmarks[] = new SymfonyObjectNormalizerBenchmark();
+            $benchmarks[] = new SymfonyGetSetNormalizerBenchmark();
+        }
 
         $iteration = $input->getOption('iteration');
         $horizontalComplexity = $input->getOption('horizontal-complexity');
         $verticalComplexity = $input->getOption('vertical-complexity');
 
-        foreach ($benchmarks as $benchmark) {
-            $this->output(
-                $this->runner->run($benchmark, $iteration, $horizontalComplexity, $verticalComplexity),
-                $output
-            );
-        }
-    }
+        $results = new ResultsAggregate();
 
-    /**
-     * @param BenchmarkResultInterface $result
-     * @param OutputInterface          $output
-     */
-    private function output(BenchmarkResultInterface $result, OutputInterface $output)
-    {
-        $output->writeln(get_class($result->getBenchmark()).' | '.$result->getTime());
+        foreach ($benchmarks as $benchmark) {
+            $results->addResult($this->runner->run($benchmark, $iteration, $horizontalComplexity, $verticalComplexity));
+            $output->writeln($benchmark->getName() . ': Done!');
+        }
+
+        $output->writeln('');
+
+        $table = new Table($output);
+        $table
+            ->setHeaders(['Serializer', 'Duration (sec)', 'Factor'])
+            ->setRows($results->getResultRows())
+        ;
+        $table->render();
     }
 }

@@ -18,6 +18,12 @@ use Symfony\Component\Serializer\Serializer;
  */
 class SymfonyGetSetNormalizerBenchmark extends AbstractBenchmark
 {
+
+    /**
+     * @const string
+     */
+    protected const NAME = 'Symfony - GetNormalizer';
+
     /**
      * @var Serializer
      */
@@ -25,6 +31,9 @@ class SymfonyGetSetNormalizerBenchmark extends AbstractBenchmark
 
     /**
      * {@inheritdoc}
+     * @throws \Doctrine\Common\Annotations\AnnotationException
+     * @throws \InvalidArgumentException
+     * @throws \Symfony\Component\Serializer\Exception\RuntimeException
      */
     public function setUp()
     {

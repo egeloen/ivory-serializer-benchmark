@@ -1,18 +1,24 @@
 {
     "require": {
-        "php": "^5.6|^7.0",
+        "php": "^7.1",
         "doctrine/cache": "^1.0",
         "egeloen/serializer": "^1.0",
-        "jms/serializer": "^1.0",
+        "jms/serializer": "^1.12",
         "symfony/polyfill-apcu": "^1.0",
         "symfony/cache": "^3.0",
         "symfony/console": "^3.0",
         "symfony/property-access": "^3.0",
-        "symfony/serializer": "^3.0",
-        "symfony/yaml": "^3.0"
+        "symfony/yaml": "^3.0",
+        "pimple/pimple": "~3.0",
+        "phpbench/phpbench": "^1.0@dev",
+        "better-serializer/better-serializer": "^0.1",
+        "symfony/serializer": "^v4.1"
     },
     "autoload": {
-        "psr-4": { "Ivory\\Tests\\Serializer\\Benchmark\\": "src/" }
+        "psr-4": {
+            "Ivory\\Tests\\Serializer\\Benchmark\\": "src/",
+            "SerializerBenchmarks\\": "src/SerializerBenchmarks/"
+        }
     },
     "minimum-stability": "dev"
 }

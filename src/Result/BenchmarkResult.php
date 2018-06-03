@@ -10,9 +10,9 @@ use Ivory\Tests\Serializer\Benchmark\BenchmarkInterface;
 class BenchmarkResult implements BenchmarkResultInterface
 {
     /**
-     * @var BenchmarkInterface
+     * @var string
      */
-    private $benchmark;
+    private $name;
 
     /**
      * @var int
@@ -20,27 +20,27 @@ class BenchmarkResult implements BenchmarkResultInterface
     private $time;
 
     /**
-     * @param BenchmarkInterface $benchmark
+     * @param string $name
      * @param int                $time
      */
-    public function __construct(BenchmarkInterface $benchmark, $time)
+    public function __construct(string $name, $time)
     {
-        $this->benchmark = $benchmark;
+        $this->name = $name;
         $this->time = $time;
     }
 
     /**
-     * @return BenchmarkInterface
+     * @return string
      */
-    public function getBenchmark()
+    public function getName(): string
     {
-        return $this->benchmark;
+        return $this->name;
     }
 
     /**
-     * {@inheritdoc}
+     * @return float
      */
-    public function getTime()
+    public function getTime(): float
     {
         return $this->time;
     }

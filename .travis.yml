@@ -1,19 +1,14 @@
 language: php
 
 php:
-    - 5.6
-    - 7.0
     - 7.1
-    - hhvm
 
 branches:
     only: master
 
 install:
-    - if [[ $TRAVIS_PHP_VERSION = 5.6 ]]; then printf "\n" | pecl install apcu-4.0.11; fi
-    - if [[ $TRAVIS_PHP_VERSION = 7.* ]]; then printf "\n" | pecl install apcu; fi
-    - if [[ $TRAVIS_PHP_VERSION != 'hhvm' ]]; then phpenv config-rm xdebug.ini; fi
-    - if [[ $TRAVIS_PHP_VERSION = 'hhvm' ]]; then mkdir -p ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d; fi
+    - printf "\n" | pecl install -f apcu
+    - phpenv config-rm xdebug.ini
     - phpenv config-add docker/php/config/php.ini
     - composer self-update
     - composer install --prefer-source --optimize-autoloader
@@ -23,3 +18,10 @@ script:
     - bin/benchmark --horizontal-complexity 4 --iteration 100
     - bin/benchmark --vertical-complexity 4 --iteration 100
     - bin/benchmark --horizontal-complexity 4 --vertical-complexity 4 --iteration 100
+    - bin/benchmark --horizontal-complexity 20 --vertical-complexity 100 --iteration 100
+    - vendor/bin/phpbench run src/SerializerBenchmarks/JmsSerializerBench.php --report=aggregate --revs=10 --iterations=10 --retry-threshold=5 --dump-file=a.xml
+    - vendor/bin/phpbench run src/SerializerBenchmarks/IvorySerializerBench.php --report=aggregate --revs=10 --iterations=10 --retry-threshold=5 --dump-file=b.xml
+    - vendor/bin/phpbench run src/SerializerBenchmarks/BetterSerializerBench.php --report=aggregate --revs=10 --iterations=10 --retry-threshold=5 --dump-file=c.xml
+    - vendor/bin/phpbench run src/SerializerBenchmarks/SymfonyGsNormSerializerBench.php --report=aggregate --revs=1 --iterations=1  --dump-file=d.xml
+    - vendor/bin/phpbench run src/SerializerBenchmarks/SymfonyObjNormSerializerBench.php --report=aggregate --revs=1 --iterations=1  --dump-file=e.xml
+    - vendor/bin/phpbench report --file=a.xml --file=b.xml --file=c.xml --file=d.xml --file=e.xml --report=compare

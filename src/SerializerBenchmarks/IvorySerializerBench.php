@@ -1,7 +1,13 @@
 <?php
+declare(strict_types=1);
 
-namespace Ivory\Tests\Serializer\Benchmark;
+/**
+ * @author Martin Fris <rasta@lj.sk>
+ */
 
+namespace SerializerBenchmarks;
+
+use Doctrine\Common\Annotations\AnnotationRegistry;
 use Ivory\Serializer\Mapping\Factory\CacheClassMetadataFactory;
 use Ivory\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Ivory\Serializer\Navigator\Navigator;
@@ -9,18 +15,17 @@ use Ivory\Serializer\Registry\TypeRegistry;
 use Ivory\Serializer\Serializer;
 use Ivory\Serializer\Type\ObjectType;
 use Ivory\Serializer\Type\Type;
+use PhpBench\Benchmark\Metadata\Annotations\ParamProviders;
+use PhpBench\Benchmark\Metadata\Annotations\Warmup;
 use Symfony\Component\Cache\Adapter\ApcuAdapter;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
+ * Class JmsSerializerBench
+ * @author mfris
+ * @package SerializerBenchmarks
  */
-class IvoryBenchmark extends AbstractBenchmark
+final class IvorySerializerBench extends AbstractBench
 {
-
-    /**
-     * @const string
-     */
-    protected const NAME = 'Ivory';
 
     /**
      * @var Serializer
@@ -28,10 +33,12 @@ class IvoryBenchmark extends AbstractBenchmark
     private $serializer;
 
     /**
-     * {@inheritdoc}
+     *
      */
-    public function setUp()
+    public function init(): void
     {
+        $loader = require __DIR__.'/../../vendor/autoload.php';
+        AnnotationRegistry::registerLoader([$loader, 'loadClass']);
         $classMetadataFactory = new CacheClassMetadataFactory(
             ClassMetadataFactory::create(),
             new ApcuAdapter('IvoryMetadata')
@@ -45,13 +52,12 @@ class IvoryBenchmark extends AbstractBenchmark
     }
 
     /**
-     * {@inheritdoc}
+     * @param array $params
+     * @ParamProviders({"provideData"})
+     * @Warmup(1)
      */
-    public function execute($horizontalComplexity = 1, $verticalComplexity = 1)
+    public function bench(array $params): void
     {
-        return $this->serializer->serialize(
-            $this->getData($horizontalComplexity, $verticalComplexity),
-            $this->getFormat()
-        );
+        $this->serializer->serialize($this->getData($params), 'json');
     }
 }

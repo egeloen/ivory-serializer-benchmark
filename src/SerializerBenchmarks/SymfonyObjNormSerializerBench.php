@@ -1,12 +1,20 @@
 <?php
+declare(strict_types=1);
 
-namespace Ivory\Tests\Serializer\Benchmark;
+/**
+ * @author Martin Fris <rasta@lj.sk>
+ */
+
+namespace SerializerBenchmarks;
 
 use Doctrine\Common\Annotations\AnnotationReader;
+use Doctrine\Common\Annotations\AnnotationRegistry;
+use PhpBench\Benchmark\Metadata\Annotations\ParamProviders;
+use PhpBench\Benchmark\Metadata\Annotations\Warmup;
+use PhpBench\Serializer\XmlEncoder;
 use Symfony\Component\Cache\Adapter\ApcuAdapter;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\YamlEncoder;
 use Symfony\Component\Serializer\Mapping\Factory\CacheClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
@@ -15,15 +23,12 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
+ * Class JmsSerializerBench
+ * @author mfris
+ * @package SerializerBenchmarks
  */
-class SymfonyObjectNormalizerBenchmark extends AbstractBenchmark
+final class SymfonyObjNormSerializerBench extends AbstractBench
 {
-
-    /**
-     * @const string
-     */
-    protected const NAME = 'Symfony - ObjectNormalizer';
 
     /**
      * @var Serializer
@@ -31,13 +36,12 @@ class SymfonyObjectNormalizerBenchmark extends AbstractBenchmark
     private $serializer;
 
     /**
-     * {@inheritdoc}
-     * @throws \Doctrine\Common\Annotations\AnnotationException
-     * @throws \InvalidArgumentException
-     * @throws \Symfony\Component\Serializer\Exception\RuntimeException
+     *
      */
-    public function setUp()
+    public function init(): void
     {
+        $loader = require __DIR__.'/../../vendor/autoload.php';
+        AnnotationRegistry::registerLoader([$loader, 'loadClass']);
         $classMetadataFactory = new CacheClassMetadataFactory(
             new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader())),
             new ApcuAdapter('SymfonyMetadata')
@@ -54,14 +58,29 @@ class SymfonyObjectNormalizerBenchmark extends AbstractBenchmark
     }
 
     /**
-     * {@inheritdoc}
-     * @throws
+     * @param array $params
+     * @ParamProviders({"provideData"})
+     * @Warmup(1)
      */
-    public function execute($horizontalComplexity = 1, $verticalComplexity = 1)
+    public function bench(array $params): void
     {
-        return $this->serializer->serialize(
-            $this->getData($horizontalComplexity, $verticalComplexity),
-            $this->getFormat()
-        );
+        $this->serializer->serialize($this->getData($params), 'json');
+    }
+
+    /**
+     * @return array
+     */
+    public function provideData(): array
+    {
+        return [
+            [
+                'vertical' => 1,
+                'horizontal' => 1,
+            ],
+            [
+                'vertical' => 2,
+                'horizontal' => 2,
+            ],
+        ];
     }
 }

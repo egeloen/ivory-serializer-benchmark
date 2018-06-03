@@ -10,6 +10,12 @@ use JMS\Serializer\SerializerBuilder;
  */
 class JmsBenchmark extends AbstractBenchmark
 {
+
+    /**
+     * @const string
+     */
+    protected const NAME = 'JMS';
+
     /**
      * @var Serializer
      */

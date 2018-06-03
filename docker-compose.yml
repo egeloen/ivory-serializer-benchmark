@@ -6,8 +6,8 @@ services:
         env_file:
             - .env
         volumes:
-            - ~/.composer:/var/www/.composer
-            - .:/var/www/html
+            - ~/.composer:/var/www/.composer:cached
+            - .:/var/www/html:cached
     hhvm:
         <<: *php
         build: docker/hhvm

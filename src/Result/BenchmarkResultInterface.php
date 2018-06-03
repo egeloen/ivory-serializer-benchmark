@@ -10,12 +10,12 @@ use Ivory\Tests\Serializer\Benchmark\BenchmarkInterface;
 interface BenchmarkResultInterface
 {
     /**
-     * @return BenchmarkInterface
+     * @return string
      */
-    public function getBenchmark();
+    public function getName(): string;
 
     /**
-     * @return int
+     * @return float
      */
-    public function getTime();
+    public function getTime(): float;
 }
