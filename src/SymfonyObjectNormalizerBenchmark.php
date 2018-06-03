@@ -32,6 +32,9 @@ class SymfonyObjectNormalizerBenchmark extends AbstractBenchmark
 
     /**
      * {@inheritdoc}
+     * @throws \Doctrine\Common\Annotations\AnnotationException
+     * @throws \InvalidArgumentException
+     * @throws \Symfony\Component\Serializer\Exception\RuntimeException
      */
     public function setUp()
     {
@@ -52,6 +55,7 @@ class SymfonyObjectNormalizerBenchmark extends AbstractBenchmark
 
     /**
      * {@inheritdoc}
+     * @throws
      */
     public function execute($horizontalComplexity = 1, $verticalComplexity = 1)
     {

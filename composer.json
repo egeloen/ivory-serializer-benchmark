@@ -8,11 +8,11 @@
         "symfony/cache": "^3.0",
         "symfony/console": "^3.0",
         "symfony/property-access": "^3.0",
-        "symfony/serializer": "^3.0",
         "symfony/yaml": "^3.0",
         "pimple/pimple": "~3.0",
         "phpbench/phpbench": "^1.0@dev",
-        "better-serializer/better-serializer": "^0.1"
+        "better-serializer/better-serializer": "^0.1",
+        "symfony/serializer": "^v4.1"
     },
     "autoload": {
         "psr-4": {
