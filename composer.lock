@@ -1,11 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "e84f44c531a2d8ad6f2cf05408f6774a",
-    "content-hash": "467f659322c65a701bc504198893d6d6",
+    "content-hash": "b6c93de3126f19de94393d694fd36299",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -73,7 +72,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2017-01-09 00:44:36"
+            "time": "2017-01-09T00:44:36+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -142,7 +141,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2017-01-20 09:27:09"
+            "time": "2017-01-20T09:27:09+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -196,7 +195,7 @@
                 "constructor",
                 "instantiate"
             ],
-            "time": "2017-01-23 09:23:06"
+            "time": "2017-01-23T09:23:06+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -250,7 +249,7 @@
                 "lexer",
                 "parser"
             ],
-            "time": "2014-09-09 13:34:57"
+            "time": "2014-09-09T13:34:57+00:00"
         },
         {
             "name": "egeloen/serializer",
@@ -323,7 +322,7 @@
             "keywords": [
                 "serializer"
             ],
-            "time": "2017-01-25 22:39:44"
+            "time": "2017-01-25T22:39:44+00:00"
         },
         {
             "name": "jms/metadata",
@@ -374,7 +373,7 @@
                 "xml",
                 "yaml"
             ],
-            "time": "2016-12-05 10:18:33"
+            "time": "2016-12-05T10:18:33+00:00"
         },
         {
             "name": "jms/parser-lib",
@@ -409,7 +408,7 @@
                 "Apache2"
             ],
             "description": "A library for easily creating recursive-descent parsers.",
-            "time": "2014-07-08 16:40:41"
+            "time": "2014-07-08T16:40:41+00:00"
         },
         {
             "name": "jms/serializer",
@@ -485,7 +484,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2017-01-19 14:33:19"
+            "time": "2017-01-19T14:33:19+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -533,7 +532,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-11-07 23:38:38"
+            "time": "2016-11-07T23:38:38+00:00"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -581,7 +580,7 @@
                 "sequence",
                 "set"
             ],
-            "time": "2015-05-17 12:39:23"
+            "time": "2015-05-17T12:39:23+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -631,7 +630,7 @@
                 "php",
                 "type"
             ],
-            "time": "2015-07-25 16:39:46"
+            "time": "2015-07-25T16:39:46+00:00"
         },
         {
             "name": "psr/cache",
@@ -677,7 +676,7 @@
                 "psr",
                 "psr-6"
             ],
-            "time": "2016-10-13 14:48:10"
+            "time": "2016-10-13T14:48:10+00:00"
         },
         {
             "name": "psr/log",
@@ -724,7 +723,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10 12:19:37"
+            "time": "2016-10-10T12:19:37+00:00"
         },
         {
             "name": "psr/simple-cache",
@@ -772,7 +771,7 @@
                 "psr-16",
                 "simple-cache"
             ],
-            "time": "2017-01-02 13:31:39"
+            "time": "2017-01-02T13:31:39+00:00"
         },
         {
             "name": "symfony/cache",
@@ -841,7 +840,7 @@
                 "caching",
                 "psr6"
             ],
-            "time": "2017-01-23 14:02:05"
+            "time": "2017-01-23T14:02:05+00:00"
         },
         {
             "name": "symfony/console",
@@ -906,7 +905,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-23 22:46:36"
+            "time": "2017-01-23T22:46:36+00:00"
         },
         {
             "name": "symfony/debug",
@@ -962,7 +961,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-24 09:54:11"
+            "time": "2017-01-24T09:54:11+00:00"
         },
         {
             "name": "symfony/inflector",
@@ -1019,7 +1018,7 @@
                 "symfony",
                 "words"
             ],
-            "time": "2017-01-02 20:33:09"
+            "time": "2017-01-02T20:33:09+00:00"
         },
         {
             "name": "symfony/options-resolver",
@@ -1073,7 +1072,7 @@
                 "configuration",
                 "options"
             ],
-            "time": "2017-01-02 20:33:09"
+            "time": "2017-01-02T20:33:09+00:00"
         },
         {
             "name": "symfony/polyfill-apcu",
@@ -1126,7 +1125,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14 01:06:16"
+            "time": "2016-11-14T01:06:16+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1185,7 +1184,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14 01:06:16"
+            "time": "2016-11-14T01:06:16+00:00"
         },
         {
             "name": "symfony/polyfill-php70",
@@ -1244,7 +1243,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14 01:06:16"
+            "time": "2016-11-14T01:06:16+00:00"
         },
         {
             "name": "symfony/property-access",
@@ -1312,7 +1311,7 @@
                 "property path",
                 "reflection"
             ],
-            "time": "2017-01-06 15:22:02"
+            "time": "2017-01-06T15:22:02+00:00"
         },
         {
             "name": "symfony/serializer",
@@ -1387,7 +1386,7 @@
             ],
             "description": "Symfony Serializer Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-24 12:59:20"
+            "time": "2017-01-24T12:59:20+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -1442,7 +1441,57 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-21 17:10:26"
+            "time": "2017-01-21T17:10:26+00:00"
+        },
+        {
+            "name": "thunderer/serializard",
+            "version": "v0.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thunderer/Serializard.git",
+                "reference": "ce8189452f08bb51a063894286d3eed5989d9d30"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thunderer/Serializard/zipball/ce8189452f08bb51a063894286d3eed5989d9d30",
+                "reference": "ce8189452f08bb51a063894286d3eed5989d9d30",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5|^7.0",
+                "symfony/yaml": ">=2.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Thunder\\Serializard\\": "src/",
+                    "Thunder\\Serializard\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tomasz Kowalczyk",
+                    "email": "tomasz@kowalczyk.cc"
+                }
+            ],
+            "description": "Flexible serializer",
+            "keywords": [
+                "hydrator",
+                "json",
+                "library",
+                "normalizer",
+                "serializer",
+                "xml",
+                "yaml"
+            ],
+            "time": "2018-02-13T09:42:42+00:00"
         }
     ],
     "packages-dev": [],

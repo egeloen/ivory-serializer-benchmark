@@ -6,6 +6,8 @@ use Ivory\Tests\Serializer\Benchmark\IvoryBenchmark;
 use Ivory\Tests\Serializer\Benchmark\JmsBenchmark;
 use Ivory\Tests\Serializer\Benchmark\Result\BenchmarkResultInterface;
 use Ivory\Tests\Serializer\Benchmark\Runner\BenchmarkRunner;
+use Ivory\Tests\Serializer\Benchmark\SerializardClosureBenchmark;
+use Ivory\Tests\Serializer\Benchmark\SerializardReflectionBenchmark;
 use Ivory\Tests\Serializer\Benchmark\SymfonyGetSetNormalizerBenchmark;
 use Ivory\Tests\Serializer\Benchmark\SymfonyObjectNormalizerBenchmark;
 use Symfony\Component\Console\Command\Command;
@@ -55,26 +57,41 @@ class BenchmarkCommand extends Command
             new SymfonyObjectNormalizerBenchmark(),
             new SymfonyGetSetNormalizerBenchmark(),
             new JmsBenchmark(),
+            new SerializardClosureBenchmark(),
+            new SerializardReflectionBenchmark(),
         ];
 
         $iteration = $input->getOption('iteration');
         $horizontalComplexity = $input->getOption('horizontal-complexity');
         $verticalComplexity = $input->getOption('vertical-complexity');
 
+        $results = [];
+        $longestNameLength = 0;
+        $bestResult = PHP_INT_MAX;
         foreach ($benchmarks as $benchmark) {
-            $this->output(
-                $this->runner->run($benchmark, $iteration, $horizontalComplexity, $verticalComplexity),
-                $output
-            );
-        }
-    }
+            $result = $this->runner->run($benchmark, $iteration, $horizontalComplexity, $verticalComplexity);
 
-    /**
-     * @param BenchmarkResultInterface $result
-     * @param OutputInterface          $output
-     */
-    private function output(BenchmarkResultInterface $result, OutputInterface $output)
-    {
-        $output->writeln(get_class($result->getBenchmark()).' | '.$result->getTime());
+            $nameLength = strlen(\get_class($benchmark));
+            if($nameLength > $longestNameLength) {
+                $longestNameLength = $nameLength;
+            }
+            if($result->getTime() < $bestResult) {
+                $bestResult = $result->getTime();
+            }
+
+            $results[] = $result;
+        }
+
+        usort($results, function(BenchmarkResultInterface $lhs, BenchmarkResultInterface $rhs) {
+            return $lhs->getTime() >= $rhs->getTime();
+        });
+
+        foreach($results as $result) {
+            $output->writeln(vsprintf('%-'.$longestNameLength.'s | %5s | %s', [
+                get_class($result->getBenchmark()),
+                sprintf('%.2f', $result->getTime() / $bestResult),
+                $result->getTime(),
+            ]));
+        }
     }
 }

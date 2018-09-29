@@ -9,7 +9,8 @@
         "symfony/console": "^3.0",
         "symfony/property-access": "^3.0",
         "symfony/serializer": "^3.0",
-        "symfony/yaml": "^3.0"
+        "symfony/yaml": "^3.0",
+        "thunderer/serializard": "^0.3"
     },
     "autoload": {
         "psr-4": { "Ivory\\Tests\\Serializer\\Benchmark\\": "src/" }
