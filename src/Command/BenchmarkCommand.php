@@ -4,6 +4,7 @@ namespace Ivory\Tests\Serializer\Benchmark\Command;
 
 use Ivory\Tests\Serializer\Benchmark\IvoryBenchmark;
 use Ivory\Tests\Serializer\Benchmark\JmsBenchmark;
+use Ivory\Tests\Serializer\Benchmark\JsonSerializableBechmark;
 use Ivory\Tests\Serializer\Benchmark\Result\BenchmarkResultInterface;
 use Ivory\Tests\Serializer\Benchmark\Runner\BenchmarkRunner;
 use Ivory\Tests\Serializer\Benchmark\SymfonyGetSetNormalizerBenchmark;
@@ -55,6 +56,7 @@ class BenchmarkCommand extends Command
             new SymfonyObjectNormalizerBenchmark(),
             new SymfonyGetSetNormalizerBenchmark(),
             new JmsBenchmark(),
+            new JsonSerializableBechmark(),
         ];
 
         $iteration = $input->getOption('iteration');

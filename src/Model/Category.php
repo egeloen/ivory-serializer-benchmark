@@ -9,7 +9,7 @@ use Symfony\Component\Serializer\Annotation as Symfony;
 /**
  * @author GeLo <geloen.eric@gmail.com>
  */
-class Category
+class Category implements \JsonSerializable
 {
     use TimestampableTrait;
 
@@ -104,5 +104,19 @@ class Category
     public function addChild(Category $child)
     {
         $this->children[] = $child;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'parent' => $this->parent,
+            'children' => $this->children,
+            'createdAt' => $this->createdAt instanceof \DateTimeInterface ? $this->createdAt->format(\DateTime::ATOM) : null,
+            'updatedAt' => $this->updatedAt instanceof \DateTimeInterface ? $this->updatedAt->format(\DateTime::ATOM) : null,
+        ];
     }
 }
