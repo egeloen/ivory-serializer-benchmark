@@ -9,7 +9,7 @@ use Symfony\Component\Serializer\Annotation as Symfony;
 /**
  * @author GeLo <geloen.eric@gmail.com>
  */
-class Thread
+class Thread implements \JsonSerializable
 {
     use TimestampableTrait;
 
@@ -54,10 +54,10 @@ class Thread
     private $comments;
 
     /**
-     * @param int       $id
-     * @param string    $title
-     * @param string    $description
-     * @param float     $popularity
+     * @param int $id
+     * @param string $title
+     * @param string $description
+     * @param float $popularity
      * @param Comment[] $comments
      */
     public function __construct($id, $title, $description, $popularity, array $comments = [])
@@ -156,5 +156,21 @@ class Thread
     public function addComment(Comment $comment)
     {
         $this->comments[] = $comment;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'description' => $this->description,
+            'popularity' => $this->popularity,
+            'comments' => $this->comments,
+            'createdAt' => $this->createdAt instanceof \DateTimeInterface ? $this->createdAt->format(\DateTime::ATOM) : null,
+            'updatedAt' => $this->updatedAt instanceof \DateTimeInterface ? $this->updatedAt->format(\DateTime::ATOM) : null,
+        ];
     }
 }

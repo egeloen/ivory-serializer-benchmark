@@ -9,7 +9,7 @@ use Symfony\Component\Serializer\Annotation as Symfony;
 /**
  * @author GeLo <geloen.eric@gmail.com>
  */
-class Forum
+class Forum implements \JsonSerializable
 {
     use TimestampableTrait;
 
@@ -46,10 +46,10 @@ class Forum
     private $threads;
 
     /**
-     * @param int           $id
-     * @param string        $name
+     * @param int $id
+     * @param string $name
      * @param Category|null $category
-     * @param Thread[]      $threads
+     * @param Thread[] $threads
      */
     public function __construct($id, $name, Category $category = null, array $threads = [])
     {
@@ -129,5 +129,20 @@ class Forum
     public function addThread(Thread $thread)
     {
         $this->threads[] = $thread;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'category' => $this->category,
+            'threads' => $this->threads,
+            'createdAt' => $this->createdAt instanceof \DateTimeInterface ? $this->createdAt->format(\DateTime::ATOM) : null,
+            'updatedAt' => $this->updatedAt instanceof \DateTimeInterface ? $this->updatedAt->format(\DateTime::ATOM) : null,
+        ];
     }
 }
