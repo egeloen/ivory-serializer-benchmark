@@ -3,19 +3,15 @@
 This project benchmarks the most popular & feature rich PHP serializers. It measures the time consumed during the 
 serialization of an object graph and give you a report of the execution.
 
-The result of the benchmark is directly available on travis: https://travis-ci.org/egeloen/ivory-serializer-benchmark
+The result of the benchmark is directly available on travis: https://travis-ci.org/php-serializers/ivory-serializer-benchmark
+
+This repository is a fork of [egeloen/ivory-serializer-benchmark](https://github.com/egeloen/ivory-serializer-benchmark),
+the project was looking not maintained for a while, please refer to this as the next reference point when benchmarking
+PHP serializers.
 
 ## Documentation
 
 If you're interesting to use the project locally, follow the next steps.
-
-### Clone the project
-
-First clone the project on on your system:
-
-``` bash
-$ git clone git@github.com:egeloen/ivory-serializer-benchmark.git 
-```
 
 ### Set up the project
 
