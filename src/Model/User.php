@@ -9,7 +9,7 @@ use Symfony\Component\Serializer\Annotation as Symfony;
 /**
  * @author GeLo <geloen.eric@gmail.com>
  */
-class User
+class User implements \JsonSerializable
 {
     use TimestampableTrait;
 
@@ -44,4 +44,20 @@ class User
      * @var bool
      */
     private $newsletter;
+
+
+    /**
+     * {@inheritdoc}
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'firstname' => $this->firstname,
+            'lastname' => $this->lastname,
+            'newsletter' => $this->newsletter,
+            'createdAt' => $this->createdAt instanceof \DateTimeInterface ? $this->createdAt->format(\DateTime::ATOM) : null,
+            'updatedAt' => $this->updatedAt instanceof \DateTimeInterface ? $this->updatedAt->format(\DateTime::ATOM) : null,
+        ];
+    }
 }
