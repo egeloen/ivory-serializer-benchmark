@@ -10,9 +10,9 @@ use JMS\Serializer\SerializerBuilder;
 use Metadata\Cache\DoctrineCacheAdapter;
 
 /**
- * @author GeLo <geloen.eric@gmail.com>
+ * @author Asmir Mustafic <goetas@gmail.com>
  */
-class JmsBenchmark extends AbstractBenchmark
+class JmsMinimalBenchmark extends AbstractBenchmark
 {
     /**
      * @var Serializer
@@ -28,6 +28,8 @@ class JmsBenchmark extends AbstractBenchmark
         $this->serializer = SerializerBuilder::create()
             ->setAnnotationReader(new CachedReader(new AnnotationReader(), $cache, false))
             ->setMetadataCache(new DoctrineCacheAdapter(__CLASS__, $cache))
+            ->configureListeners(function (){})
+            ->configureHandlers(function (){})
             ->build();
     }
 
