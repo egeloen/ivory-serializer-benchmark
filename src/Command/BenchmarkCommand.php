@@ -5,7 +5,7 @@ namespace Ivory\Tests\Serializer\Benchmark\Command;
 use Ivory\Tests\Serializer\Benchmark\IvoryBenchmark;
 use Ivory\Tests\Serializer\Benchmark\JmsBenchmark;
 use Ivory\Tests\Serializer\Benchmark\JmsMinimalBenchmark;
-use Ivory\Tests\Serializer\Benchmark\JsonSerializableBechmark;
+use Ivory\Tests\Serializer\Benchmark\JsonSerializableBenchmark;
 use Ivory\Tests\Serializer\Benchmark\Result\BenchmarkResultInterface;
 use Ivory\Tests\Serializer\Benchmark\Runner\BenchmarkRunner;
 use Ivory\Tests\Serializer\Benchmark\SerializardClosureBenchmark;
@@ -60,7 +60,7 @@ class BenchmarkCommand extends Command
             new SymfonyGetSetNormalizerBenchmark(),
             new JmsBenchmark(),
             new JmsMinimalBenchmark(),
-            new JsonSerializableBechmark(),
+            new JsonSerializableBenchmark(),
             new SerializardClosureBenchmark(),
             new SerializardReflectionBenchmark(),
         ];
