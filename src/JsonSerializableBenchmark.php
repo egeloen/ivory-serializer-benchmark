@@ -5,7 +5,7 @@ namespace Ivory\Tests\Serializer\Benchmark;
 /**
  * @author scyzoryck <scyzoryck@gmail.com>
  */
-class JsonSerializableBechmark extends AbstractBenchmark
+class JsonSerializableBenchmark extends AbstractBenchmark
 {
     /**
      * {@inheritdoc}
