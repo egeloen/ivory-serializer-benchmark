@@ -1,6 +1,6 @@
 {
     "require": {
-      "php": "^5.6|^7.0",
+      "php": "^7.2",
       "doctrine/cache": "^1.0",
       "egeloen/serializer": "^1.0",
       "jms/serializer": "^2.0",
@@ -11,6 +11,18 @@
       "symfony/serializer": "^4.0",
       "thunderer/serializard": "^0.3"
     },
+    "authors": [
+      {
+        "name": "Eric Geleon",
+        "email": "geloen.eric@gmail.com",
+        "role": "author"
+      },
+      {
+        "name": "Asmir Mustafic",
+        "email": "goetas@gmail.com",
+        "role": "maintainer"
+      }
+    ],
     "autoload": {
         "psr-4": { "Ivory\\Tests\\Serializer\\Benchmark\\": "src/" }
     }
